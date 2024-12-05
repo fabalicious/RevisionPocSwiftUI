@@ -9,18 +9,20 @@
 /* Begin PBXBuildFile section */
 		4A93F0D22D00B95D00D26F60 /* revi_pocApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A93F0D12D00B95D00D26F60 /* revi_pocApp.swift */; };
 		4A93F0D42D00B95D00D26F60 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A93F0D32D00B95D00D26F60 /* ContentView.swift */; };
-		4A93F0D62D00B95D00D26F60 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A93F0D52D00B95D00D26F60 /* Item.swift */; };
 		4A93F0D82D00B95F00D26F60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A93F0D72D00B95F00D26F60 /* Assets.xcassets */; };
 		4A93F0DB2D00B95F00D26F60 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A93F0DA2D00B95F00D26F60 /* Preview Assets.xcassets */; };
+		4A93F0E42D01B5CC00D26F60 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A93F0E32D01B5CC00D26F60 /* Resource.swift */; };
+		4A93F0E62D01B74400D26F60 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A93F0E52D01B74400D26F60 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4A93F0CE2D00B95D00D26F60 /* revi-poc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "revi-poc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A93F0D12D00B95D00D26F60 /* revi_pocApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = revi_pocApp.swift; sourceTree = "<group>"; };
 		4A93F0D32D00B95D00D26F60 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		4A93F0D52D00B95D00D26F60 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		4A93F0D72D00B95F00D26F60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A93F0DA2D00B95F00D26F60 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4A93F0E32D01B5CC00D26F60 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		4A93F0E52D01B74400D26F60 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,9 +57,10 @@
 			children = (
 				4A93F0D12D00B95D00D26F60 /* revi_pocApp.swift */,
 				4A93F0D32D00B95D00D26F60 /* ContentView.swift */,
-				4A93F0D52D00B95D00D26F60 /* Item.swift */,
 				4A93F0D72D00B95F00D26F60 /* Assets.xcassets */,
 				4A93F0D92D00B95F00D26F60 /* Preview Content */,
+				4A93F0E32D01B5CC00D26F60 /* Resource.swift */,
+				4A93F0E52D01B74400D26F60 /* NetworkManager.swift */,
 			);
 			path = "revi-poc";
 			sourceTree = "<group>";
@@ -141,7 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A93F0D42D00B95D00D26F60 /* ContentView.swift in Sources */,
-				4A93F0D62D00B95D00D26F60 /* Item.swift in Sources */,
+				4A93F0E62D01B74400D26F60 /* NetworkManager.swift in Sources */,
+				4A93F0E42D01B5CC00D26F60 /* Resource.swift in Sources */,
 				4A93F0D22D00B95D00D26F60 /* revi_pocApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,61 +1,64 @@
-//
-//  ContentView.swift
-//  revi-poc
-//
-//  Created by Fabian Knecht on 04.12.2024.
-//
-
 import SwiftUI
-import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    @State private var resources: [Resource] = [] // Stores API response
+    @State private var isLoading = false         // Tracks loading state
+    @State private var errorMessage: String?     // Error handling
+    
+    let url = URL(string: "http://127.0.0.1:8000/resources")! // Replace with your server URL
+    
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
+        VStack(spacing: 20) {
+            Button(action: fetchResources) {
+                Text(isLoading ? "Loading..." : "Fetch Data")
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(isLoading ? Color.gray : Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+            .disabled(isLoading)
+            
+            if let errorMessage = errorMessage {
+                Text("Error: \(errorMessage)")
+                    .foregroundColor(.red)
+                    .padding()
+            } else if resources.isEmpty && !isLoading {
+                Text("No data loaded yet.")
+                    .foregroundColor(.gray)
+            } else {
+                List(resources) { resource in
+                    Text(resource.message)
                 }
             }
-        } detail: {
-            Text("Select an item")
         }
+        .padding()
     }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+    
+    func fetchResources() {
+        isLoading = true
+        errorMessage = nil
+        
+        Task {
+            do {
+                // Call the API and decode the response
+                let fetchedResources = try await getResource(from: url)
+                DispatchQueue.main.async {
+                    resources = fetchedResources // You can modify this for multiple resources
+                    isLoading = false
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    errorMessage = error.localizedDescription
+                    isLoading = false
+                }
             }
         }
     }
 }
 
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
